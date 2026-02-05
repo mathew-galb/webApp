@@ -2,6 +2,7 @@ import os
 from flask import Flask
 
 
+
 app = Flask(__name__)
 
 WEB_API_PORT = os.getenv('WEB_API_PORT')
@@ -10,6 +11,10 @@ WEB_API_VALUE = os.getenv('WEB_API_VALUE')
 @app.route("/health")
 def health():
     return "OK", 200
+
+@app.route("/value")
+def value():
+    return WEB_API_VALUE
 
 
 
@@ -20,7 +25,9 @@ def health():
 """
 
 if __name__ == '__main__':
-    if os.getenv('WEB_API_PORT') == None :
+    if os.getenv('WEB_API_PORT') == None:
         print("Please assign a port to the enviornment variable WEB_API_PORT")
+    if os.getenv('WEB_API_VALUE') == None:
+        print("Please assign a value to the enviornment variable WEB_API_VALUE")
     else:
         app.run(debug=True, port=WEB_API_PORT)
