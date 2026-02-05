@@ -30,4 +30,4 @@ if __name__ == '__main__':
     if os.getenv('WEB_API_VALUE') == None:
         print("Please assign a value to the enviornment variable WEB_API_VALUE")
     else:
-        app.run(debug=True, port=WEB_API_PORT)
+        app.run(debug=False, port=WEB_API_PORT)
