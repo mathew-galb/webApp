@@ -30,4 +30,5 @@ if __name__ == '__main__':
     if os.getenv('WEB_API_VALUE') == None:
         print("Please assign a value to the enviornment variable WEB_API_VALUE")
     else:
-        app.run(debug=False, port=WEB_API_PORT)
+        app.run(host="0.0.0.0", port=WEB_API_PORT)
+        #Adding host="0.0.0.0" fixed my none response problem
