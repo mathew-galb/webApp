@@ -32,3 +32,4 @@ if __name__ == '__main__':
     else:
         app.run(host="0.0.0.0", port=WEB_API_PORT)
         #Adding host="0.0.0.0" fixed my none response problem
+
