@@ -17,4 +17,6 @@ jobs:
           python-version: '3.12'
 
       - name: install Dependencies
-        run: pip freeze > requirements.txt 
+        run: install -r requirements.txt  
+
+    
