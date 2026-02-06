@@ -5,6 +5,13 @@ exec 3>&1 4>&2
 trap 'exec 2>&4 1>&3' 0 1 2 3
 exec 1>make-container-log.out 2>&1
 
+PORT1="${1:-8080}"
+PORT2="${2:-5000}"
+value1="${3:-"This is Container1"}"
+value2="${4:-"This is Container2"}"
+container1="${5:-container1}"
+container2="${6:-container2}"
+
 
 #Exit on Error
 set -e
@@ -21,8 +28,10 @@ if ! test -f ./Dockerfile; then
   exit 1
 fi
 
-
-
 docker build -t flask-web-api .
-docker run -d -e WEB_API_PORT=8080 -e WEB_API_VALUE=container1 -p 8080:8080 --name container1 flask-web-api    
-docker run -d -e WEB_API_PORT=5000 -e WEB_API_VALUE=container2 -p 5000:5000 --name container2 flask-web-api     
+echo "Built Image"
+
+docker run -d -e WEB_API_PORT="$PORT1" -e WEB_API_VALUE="$value1" -p "$PORT1":"$PORT1" --name "$container1" flask-web-api  
+echo "Built Container: " + $container1  
+docker run -d -e WEB_API_PORT="$PORT2" -e WEB_API_VALUE="$value2" -p "$PORT2":"$PORT2" --name "$container2" flask-web-api  
+echo "Built Container: " + $container2   
