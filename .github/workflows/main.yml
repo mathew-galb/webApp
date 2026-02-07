@@ -19,8 +19,27 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USER}}
           password: ${{ secrets.DOCKER_HUB_PAT}}
 
-      - name: build image
-        run: docker build . --file Dockerfile
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          file: ./Dockerfile
+          push: true
+          tags: user/app:latest
+
+          
+      # #docker is already present in ubuntu-latest
+      # - name: build image
+      #   run: docker build -t flask-web-api . 
+
+      # - name: push image
+      #   run: 
+
+      # - name: Build and push
+      #   uses: docker/build-push-action@v6
+      #   with:
+      #     push: true
+      #     tags: ${{ vars.DOCKER_USERNAME }}/${{ github.event.repository.name }}:latest
 
       # - name: Set up Python
       #   uses: actions/setup-python@v5
