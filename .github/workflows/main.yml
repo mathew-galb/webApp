@@ -19,7 +19,13 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USER}}
           password: ${{ secrets.DOCKER_HUB_PAT}}
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
+      - name: build image
+        run: docker build . --file Dockerfile
+
+      # - name: Set up Python
+      #   uses: actions/setup-python@v5
+      #   with:
+      #     python-version: '3.12'
+
+
+      
