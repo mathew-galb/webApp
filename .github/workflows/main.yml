@@ -25,26 +25,9 @@ jobs:
         with:
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USER}}/app:latest
+          tags: ${{ secrets.DOCKER_HUB_USER}}/webAPI:latest
 
-          
-      # #docker is already present in ubuntu-latest
-      # - name: build image
-      #   run: docker build -t flask-web-api . 
-
-      # - name: push image
-      #   run: 
-
-      # - name: Build and push
-      #   uses: docker/build-push-action@v6
-      #   with:
-      #     push: true
-      #     tags: ${{ vars.DOCKER_USERNAME }}/${{ github.event.repository.name }}:latest
-
-      # - name: Set up Python
-      #   uses: actions/setup-python@v5
-      #   with:
-      #     python-version: '3.12'
+ 
 
 
       
