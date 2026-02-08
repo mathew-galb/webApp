@@ -27,6 +27,6 @@ jobs:
           python -m pytest app/test_main.py
         env:
           WEB_API_VALUE: test_value
-          WEB_API_PORT: 5000
+          WEB_API_PORT: 3000
           
     
