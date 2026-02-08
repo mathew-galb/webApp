@@ -25,8 +25,6 @@ jobs:
       - name: Run Tests
         run: |
           python -m pytest app/test_main.py
-        env:
-          WEB_API_VALUE: test_value
-          WEB_API_PORT: 3000
+        
           
     
