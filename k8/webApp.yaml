@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      webAPP: web
+  template:
+    metadata:
+      labels:
+        webAPP: web
+    spec:
+      containers:
+        - name: webapp-site
+          image: galbrmanwraith/webapi:latest
+          imagePullPolicy: Never
+          env:
+            - name: WEB_API_VALUE
+              value: "pod 1"
+            - name: WEB_API_PORT
+              value: "3000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-main
+  namespace: default
+spec:
+  type: NodePort
+  selector:
+    webAPP: web
+  ports:
+    - port: 3000
+      targetPort: 3000
+      nodePort: 30000

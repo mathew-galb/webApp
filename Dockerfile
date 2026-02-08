@@ -17,3 +17,5 @@ EXPOSE 5000
 
 # Command to run the app
 CMD ["python", "app/main.py"]
+
+# docker pull galbrmanwraith/webapi:latest
