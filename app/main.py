@@ -39,7 +39,7 @@ def value():
 if __name__ == '__main__':
     if os.getenv('WEB_API_PORT') == None:
         print("Please assign a port to the enviornment variable WEB_API_PORT")
-    if os.getenv('WEB_API_VALUE') == None:
+    elif os.getenv('WEB_API_VALUE') == None:
         print("Please assign a value to the enviornment variable WEB_API_VALUE")
     else:
         app.run(host="0.0.0.0", port=os.getenv('WEB_API_PORT'))
