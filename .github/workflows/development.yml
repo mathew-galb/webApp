@@ -2,7 +2,6 @@ name: build & deploy docker image
 
 on:
   pull_request:
-  merge_group:
     branches:
     - main
 
