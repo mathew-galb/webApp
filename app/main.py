@@ -9,7 +9,7 @@ OS lib:
 https://docs.python.org/3/library/os.html
 """
 
-app = Flask(__name__)
+app = Flask(__name__
 
 # WEB_API_PORT = os.getenv('WEB_API_PORT')
 # WEB_API_VALUE = os.getenv('WEB_API_VALUE')
