@@ -28,10 +28,32 @@ if ! test -f ./Dockerfile; then
   exit 1
 fi
 
+
+if [ "$PORT1" == "$PORT2" ]; then
+  echo "You cannot set the same port for 2 containers..."
+  exit 1
+fi
+
+
 docker build -t flask-web-api .
 echo "Built Image"
 
+#Check if "$container1" is currently a container and delete if so 
+if docker container inspect $container1 >/dev/null 2>&1; then
+  echo "$container1 exists.. Deleting"
+  docker rm -f "$container1"
+fi
+
 docker run -d -e WEB_API_PORT="$PORT1" -e WEB_API_VALUE="$value1" -p "$PORT1":"$PORT1" --name "$container1" flask-web-api  
 echo "Built Container: " + $container1  
+echo "Please Visit: http://127.0.0.1:$PORT1/value for $container1"
+
+#Check if "$container2" is currently a container and delete if so 
+if docker container inspect $container2 >/dev/null 2>&1; then
+  echo "$container2 exists.. Deleting"
+  docker rm -f "$container2"
+fi
+
 docker run -d -e WEB_API_PORT="$PORT2" -e WEB_API_VALUE="$value2" -p "$PORT2":"$PORT2" --name "$container2" flask-web-api  
 echo "Built Container: " + $container2   
+echo "Please Visit: http://127.0.0.1:$PORT2/value for $container2"

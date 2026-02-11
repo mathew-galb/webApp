@@ -8,12 +8,10 @@ WORKDIR /app
 COPY . /app  
 
 
-
 # Install dependencies
-RUN pip install -r requirements.txt  
+RUN pip install --no-cache-dir -r requirements.txt  
  
 
 # Command to run the app
 CMD ["python", "app/main.py"]
 
-# docker pull galbrmanwraith/webapi:latest
